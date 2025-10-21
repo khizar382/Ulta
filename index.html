@@ -114,17 +114,20 @@
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
-          document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
-              }).then((unityInstance) => {
-                document.querySelector("#unity-loading-bar").style.display = "none";
-                document.querySelector("#unity-fullscreen-button").onclick = () => {
-                  unityInstance.SetFullscreen(1);
-                };
+  document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
+}).then((unityInstance) => {
+  // 🔥 This line exposes the Unity instance globally for your .jslib plugin
+  window.unityInstance = unityInstance;
 
-              }).catch((message) => {
-                alert(message);
-              });
-            };
+  console.log("✅ Unity instance is ready and globally accessible");
+
+  document.querySelector("#unity-loading-bar").style.display = "none";
+  document.querySelector("#unity-fullscreen-button").onclick = () => {
+    unityInstance.SetFullscreen(1);
+  };
+}).catch((message) => {
+  alert(message);
+});
 
       document.body.appendChild(script);
 
