@@ -52,12 +52,12 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/3bb1b83a170e137326fda887f26cb313.loader.js";
+      var loaderUrl = buildUrl + "/f40b6b4b2cc72127012cc509023588e3.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/a4d5bca11378ce8d420c4b62c400a43c.data.unityweb",
-        frameworkUrl: buildUrl + "/fe0d554b19df25e9d38c3ad65eeebe10.framework.js.unityweb",
-        codeUrl: buildUrl + "/69902a972b30236b039605fb770770fc.wasm.unityweb",
+        dataUrl: buildUrl + "/d342cedcec70c458283df94cf3def8e1.data.unityweb",
+        frameworkUrl: buildUrl + "/7484b85716a0f152ba95fdf018204c7a.framework.js.unityweb",
+        codeUrl: buildUrl + "/b87ffcc1a08625a7eaf6a7d87564c1b3.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Ulta",
         productName: "Ulta",
@@ -116,7 +116,6 @@
         createUnityInstance(canvas, config, (progress) => {
           document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
               }).then((unityInstance) => {
-    window.unityInstance = unityInstance;
                 document.querySelector("#unity-loading-bar").style.display = "none";
                 document.querySelector("#unity-fullscreen-button").onclick = () => {
                   unityInstance.SetFullscreen(1);
