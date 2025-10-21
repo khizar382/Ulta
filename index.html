@@ -56,7 +56,7 @@
       var config = {
         arguments: [],
         dataUrl: buildUrl + "/e3c4797f622f9f51d6c96da20d6fe35a.data.unityweb",
-        frameworkUrl: buildUrl + "/02da601aaa497ba2050688995dd1f6a6.framework.js.unityweb",
+        frameworkUrl: buildUrl + "/317ba7b7ffd8959d3ddc0543f00f8674.framework.js.unityweb",
         codeUrl: buildUrl + "/7f2344e58ca600b3d695fcf9fc3f90a2.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Ulta",
@@ -114,20 +114,18 @@
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
-  document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
-}).then((unityInstance) => {
-  // 🔥 This line exposes the Unity instance globally for your .jslib plugin
-  window.unityInstance = unityInstance;
+          document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
+              }).then((unityInstance) => {
+    window.unityInstance = unityInstance;
+                document.querySelector("#unity-loading-bar").style.display = "none";
+                document.querySelector("#unity-fullscreen-button").onclick = () => {
+                  unityInstance.SetFullscreen(1);
+                };
 
-  console.log("✅ Unity instance is ready and globally accessible");
-
-  document.querySelector("#unity-loading-bar").style.display = "none";
-  document.querySelector("#unity-fullscreen-button").onclick = () => {
-    unityInstance.SetFullscreen(1);
-  };
-}).catch((message) => {
-  alert(message);
-});
+              }).catch((message) => {
+                alert(message);
+              });
+            };
 
       document.body.appendChild(script);
 
